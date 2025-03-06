@@ -17,3 +17,16 @@ export const createTransaction = (transactionObject, userId) => {
     .catch((error) => console.log(error));
   return response;
 };
+
+// INDEX | GET Transactions
+export const getTransactions = (userId) => {
+  const response = axios
+    .get(`${API_URL}`, {
+      headers: {
+        authorization: userId,
+      },
+    })
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+  return response;
+};

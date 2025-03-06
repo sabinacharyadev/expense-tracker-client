@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/user/userAction";
 import { useNavigate } from "react-router";
 const LoginForm = () => {
@@ -18,8 +18,14 @@ const LoginForm = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
-    navigate("/transactions");
   };
+
+  const { user } = useSelector((state) => state.user);
+  useEffect(() => {
+    if (user._id) {
+      navigate("/transactions");
+    }
+  }, [navigate, user._id]);
 
   return (
     <Form onSubmit={handleOnSubmit}>

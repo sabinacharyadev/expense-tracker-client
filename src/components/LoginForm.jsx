@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/user/userAction";
+import { useNavigate } from "react-router";
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const initialData = { email: "", password: "" };
   const [formData, setFormData] = useState(initialData);
   const { email, password } = formData;
@@ -16,6 +18,7 @@ const LoginForm = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
+    navigate("/transactions");
   };
 
   return (

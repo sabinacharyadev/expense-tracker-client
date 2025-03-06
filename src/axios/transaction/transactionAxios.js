@@ -30,3 +30,17 @@ export const getTransactions = (userId) => {
     .catch((error) => console.log(error));
   return response;
 };
+
+// DELETE || Delete Transaction
+export const deleteTransactions = (selectedIds, userId) => {
+  const response = axios
+    .delete(`${API_URL}`, {
+      data: selectedIds,
+      headers: {
+        authorization: userId,
+      },
+    })
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+  return response;
+};

@@ -2,7 +2,10 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { addTransaction } from "../redux/transaction/transactionAction";
+import {
+  addTransaction,
+  showTransactions,
+} from "../redux/transaction/transactionAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const TransactionForm = () => {
@@ -27,6 +30,7 @@ const TransactionForm = () => {
     e.preventDefault();
     dispatch(addTransaction({ ...formData, userId: user._id }, user._id));
     handleClose();
+    dispatch(showTransactions(user._id));
   };
 
   const handleClose = () => {

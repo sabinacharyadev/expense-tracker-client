@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { signUpUser } from "../redux/user/userAction";
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const initialData = {
     name: "",
     email: "",
@@ -15,8 +18,13 @@ const SignUpForm = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signUpUser({ name, email, password }));
+  };
   return (
-    <Form>
+    <Form onSubmit={handleOnSubmit}>
       <h2>Sign Up</h2>
 
       <Form.Group className="mb-3" controlId="formBasicText">

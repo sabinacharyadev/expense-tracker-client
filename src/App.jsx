@@ -4,6 +4,7 @@ import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import PrivateRoutes from "./components/PrivateRoutes";
 import TransactionPage from "./pages/TransactionPage";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           }
         />
       </Routes>
+      <ToastContainer />
     </>
   );
 }

@@ -53,6 +53,7 @@ const TransactionForm = () => {
             <Form.Group className="mb-3" controlId="formBasicTitle">
               <Form.Label>Title</Form.Label>
               <Form.Control
+                autoFocus
                 type="text"
                 name="title"
                 value={title}
